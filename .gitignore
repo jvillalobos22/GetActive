@@ -7,3 +7,4 @@ css
 *.img
 dist
 includes/dist
+.sass-cache

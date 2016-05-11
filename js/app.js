@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp',
-  ['ngRoute', 'firebase'])
-  .constant('FIREBASE_URL', 'https://ngdata22.firebaseio.com/');
+  ['ngRoute', 'firebase', 'mm.foundation'])
+  .constant('FIREBASE_URL', 'https://getactive22.firebaseio.com/');
 
 
 myApp.run(['$rootScope', '$location',
@@ -24,24 +24,37 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/register.html',
       controller: 'RegistrationController'
     }).
-    when('/checkins/:uId/:mId', {
-      templateUrl: 'views/checkins.html',
-      controller: 'CheckinsController'
-    }).
-    when('/checkins/:uId/:mId/checkinsList', {
-      templateUrl: 'views/checkinslist.html',
-      controller: 'CheckinsController'
-    }).
-    when('/meetings', {
-      templateUrl: 'views/meetings.html',
-      controller: 'MeetingsController',
+    when('/events', {
+      templateUrl: 'views/events.html',
+      controller: 'EventsController',
       resolve: {
         currentAuth: function(Authentication) {
           return Authentication.requireAuth();
         } //current Auth
       } //resolve
     }).
+    when('/events/new', {
+      templateUrl: 'views/eventsNew.html',
+      controller: 'EventsController',
+      resolve: {
+        currentAuth: function(Authentication) {
+          return Authentication.requireAuth();
+        } //current Auth
+      } //resolve
+    }).
+    when('/events/:eId', {
+        templateUrl: 'views/eventsShow.html',
+        controller: 'SingleEventController'
+    }).
+    when('/events/:eId/edit', {
+        templateUrl: 'views/eventsEdit.html',
+        controller: 'SingleEventController'
+    }).
     otherwise({
-      redirectTo: '/login'
+      redirectTo: '/events'
     });
 }]);
+
+myApp.controller('OffCanvasDemoCtrl', function ($scope) {
+
+});

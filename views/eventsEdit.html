@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="large-12 columns">
+        <div class="card meetings cf">
+            <div class="textintro">
+                <h1>Edit Your Event</h1>
+            </div>
+
+            <form class="formgroup addmeeting cf" name="myform" ng-submit="updateEvent()" novalidate >
+                <!-- Event Name -->
+                <input type="text" name="eventname"
+                    ng-model="singleEvent.name" ng-required="true">
+                    <p>
+                        {{ eventname }}
+                    </p>
+                <!-- Activity Type -->
+                <select ng-model="singleEvent.activity_type" ng-required="true">
+                    <option selected="true" disabled="disabled" value="">
+                        Select an Activity Type
+                    </option>
+                    <option value="soccer">
+                        Soccer
+                    </option>
+                    <option value="football">
+                        Football
+                    </option>
+                    <option value="basketball">
+                        Basket Ball
+                    </option>
+                </select>
+
+                <!-- Players Required -->
+                <input type="number" name="players_required" placeholder="Players Required"
+                    ng-model="singleEvent.players_required" ng-required="true">
+
+                <!-- Location -->
+                <input type="text" name="location" placeholder="Location"
+                    ng-model="singleEvent.location" ng-required="true">
+
+                <!-- Summary -->
+                <input type="text" name="summary" placeholder="Message to Players"
+                    ng-model="singleEvent.summary" >
+
+                <!-- Skill Level -->
+                <select ng-model="singleEvent.skill_level" ng-required="true">
+                    <option selected="true" disabled="disabled" value="">
+                        Required Skill
+                    </option>
+                    <option value="all">
+                        All levels welcome
+                    </option>
+                    <option value="intermediate">
+                        Intermediate
+                    </option>
+                    <option value="advanced">
+                        Advanced
+                    </option>
+                    <option value="expert">
+                        Expert
+                    </option>
+                </select>
+
+
+                <button type="submit" class="btn" ng-disabled="myform.$invalid">+</button>
+            </form>
+        </div><!-- meetings cf -->
+    </div>
+</div>

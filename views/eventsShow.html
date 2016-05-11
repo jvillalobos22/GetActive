@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="large-12 columns">
+
+
+        <div class="card meetings cf">
+
+            <div class="meeting">
+
+                <div class="event_show">
+                    <span class="text">{{ singleEvent.name }}</span>
+                    <span class="text">{{ singleEvent.activity_type }}</span>
+                    <span class="text">{{ singleEvent.players_required }}</span>
+                    <h4 class="event_show_location">{{ singleEvent.location }}</h4>
+                    <h5 class="event_show_players_attending">{{ singleEvent.players_attending }}</h5>
+                    <p class="summary">{{ singleEvent.summary }}</p>
+                </div>
+
+                <a class="btn" ng-href="#/events/{{ singleEvent.$id }}/edit">Edit this Event</a>
+            </div>
+        </div><!-- meetings cf -->
+    </div>
+</div>

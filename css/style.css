@@ -85,7 +85,7 @@ body  {
   line-height: 160%;
   color: #555459;
   line-height: 1.5rem;
-    *zoom: 1;
+    /* *zoom: 1; */
 }
 
 .card {
@@ -565,11 +565,11 @@ nav li a:hover {
   text-decoration: none;
 }
 
-.tooltip {
+.tool-tip {
   position: relative;
 }
 
-.tooltip span {
+.tool-tip span {
   background: #FFF;
   color: #000;
   font-size: .8em;
@@ -596,7 +596,7 @@ nav li a:hover {
           transition: all .25s ease-out;
 }
 
-.tooltip:hover span {
+.tool-tip:hover span {
   opacity: 1;
   pointer-events: auto;
   -webkit-transform: translateY(0px);

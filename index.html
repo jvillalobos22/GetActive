@@ -5,7 +5,11 @@
   <title>Get Active</title>
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <link href='https://fonts.googleapis.com/css?family=Lato:400,100,700,900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/foundation.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   <script src="js/lib/angular/angular.min.js"></script>
   <script src="js/lib/angular/angular-route.min.js"></script>
@@ -17,31 +21,66 @@
   <script src="js/app.js"></script>
   <script src="js/services/authentication.js"></script>
   <script src="js/controllers/registration.js"></script>
-  <script src="js/controllers/meetings.js"></script>
-  <script src="js/controllers/checkins.js"></script>
+  <script src="js/controllers/events.js"></script>
+  <script src="js/controllers/singleEvent.js"></script>
 
 </head>
 <body>
-<header>
-  <nav class="cf" ng-include="'views/nav.html'"></nav>
-</header>
-<div class="page">
+    <div ng-controller="OffCanvasDemoCtrl">
+        <div class="off-canvas-wrap">
+            <div class="inner-wrap">
+                <nav class="tab-bar">
+                    <section class="left-small">
+                        <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+                    </section>
 
-  <div class="userinfo" ng-show="currentUser" ng-controller="RegistrationController">
-    <span class="userinfo">Hi {{ currentUser.firstname}}</span>
-    <a ng-href="#/login" ng-click="logout()">logout</a>
-  </div>
+                    <section class="middle tab-bar-section">
+                        <h1 class="title">GetActive</h1>
+                    </section>
 
-  <main class="cf" ng-view>
-  </main>
-</div>
+                    <section class="right-small">
+                        <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+                    </section>
 
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/what-input/what-input.js"></script>
-<script src="bower_components/foundation-sites/dist/foundation.js"></script>
-<script type="javascript">
-    $(document).foundation();
-</script>
+                </nav>
+                <a class="exit-off-canvas"></a>
+                <aside class="left-off-canvas-menu"><!-- Left Off Canvas Sidebar -->
+                    <ul class="off-canvas-list">
+                        <li>
+                            <a ng-show="currentUser" ng-href="#/events">Events
+                                <span ng-show="howManyEvents" class="badge">{{ howManyEvents }}</span>
+                            </a>
+                        </li>
+                        <li><a ng-hide="currentUser" ng-href="#/login">Login</a></li>
+                        <li><a ng-hide="currentUser" ng-href="#/register">Register</a></li>
+                    </ul>
+                </aside><!-- End Left Off Canvas Sidebar -->
+                <aside class="right-off-canvas-menu">
+                    <ul class="off-canvas-list">
+                        <li><a href="#">Right Sidebar</a></li>
+                    </ul>
+                </aside>
+                <section class="main-section">
+                        <div class="page">
+                            <div class="userinfo" ng-show="currentUser" ng-controller="RegistrationController">
+                                <span class="userinfo">Hi {{ currentUser.firstname}}</span>
+                                <a ng-href="#/login" ng-click="logout()">logout</a>
+                            </div>
+
+                            <main class="cf" ng-view></main>
+                        </div>
+
+                        <footer>
+                            <p>
+                                &copy; Get Active 2016
+                            </p>
+                        </footer>
+                </section><!-- end main-section -->
+            </div><!-- end innerwrap -->
+        </div><!-- end off-canvas wrap -->
+    </div><!-- end off-canvas controller -->
+
+<script src="/bower_components/angular-foundation/mm-foundation.min.js"></script>
 
 </body>
 </html>

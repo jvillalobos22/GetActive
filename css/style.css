@@ -570,12 +570,12 @@ nav li a:hover {
 }
 
 .tool-tip span {
-  background: #FFF;
+  background: #FFCDD2;
   color: #000;
-  font-size: .8em;
+  font-size: 12px;
   bottom: 100%;
   display: block;
-  left: -20px;
+  left: 30px;
   opacity: 0;
   padding: 2px 13px;
   margin-bottom: 5px;
@@ -583,7 +583,7 @@ nav li a:hover {
   position: absolute;
   border-radius: 4px;
   box-shadow: none;
-  border: 1px solid #C5C5C5;
+  border: 1px solid #B71C1C;
   -webkit-transform: translateY(25px);
      -moz-transform: translateY(25px);
       -ms-transform: translateY(25px);

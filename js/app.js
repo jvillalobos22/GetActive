@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp',
-  ['ngRoute', 'firebase', 'mm.foundation'])
-  .constant('FIREBASE_URL', 'https://getactive22.firebaseio.com/');
-
+  ['ngRoute', 'firebase', 'mm.foundation', 'jkuri.datepicker'])
+  .constant('FIREBASE_URL', 'https://getactive22.firebaseio.com/')
+  .constant('USERS_URL', 'https://getactive22.firebaseio.com/users');
 
 myApp.run(['$rootScope', '$location',
   function($rootScope, $location) {
@@ -12,6 +12,7 @@ myApp.run(['$rootScope', '$location',
           $location.path('/login');
         } // AUTH REQUIRED
       }); //event info
+
   }]); //run
 
 myApp.config(['$routeProvider', function($routeProvider) {
@@ -49,6 +50,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
     when('/events/:eId/edit', {
         templateUrl: 'views/eventsEdit.html',
         controller: 'SingleEventController'
+    }).
+    when('/events/query/:query', {
+        templateUrl: 'views/events.html',
+        controller: 'EventsController'
     }).
     otherwise({
       redirectTo: '/events'

@@ -1,22 +1,73 @@
+
+<div class="ga_event_banner" ng-class="setBanner(singleEvent.activity_type)" >
+
+</div>
+<div class="ga_page_bar ga_events_show_page">
+    <div class="row">
+        <h2>{{ singleEvent.name }}</h2>
+        <a class="ga_btn ga_edit_btn" ng-href="#/events/{{ singleEvent.$id }}/edit" ng-show="currentUser.$id === singleEvent.creator_id">Edit this Event</a>
+        <div class="ga_activity_type_pin">
+            <h3 class="text">{{ singleEvent.activity_type }}</h3>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="large-12 columns">
+        <div class="event_show row">
+            <div class="large-8 medium-8 small-12 columns">
+                <p class="event_date">
+                    {{ singleEvent.event_date | date: 'EEEE, MMM d' }}
+                </p>
+                <p class="event_time">
+                    {{ singleEvent.event_start_time | date: 'h:mm a'}} - {{ singleEvent.event_end_time | date: 'h:mm a' }}
+                </p>
+                <h6>
+                    Location:
+                </h6>
+                <p class="event_show_location">{{ singleEvent.location }}</p>
+                <h6>
+                    Address:
+                </h6>
+                <p class="event_show_location" ng-show="singleEvent.location_address">
+                    {{ singleEvent.location_address.address }}<br>{{ singleEvent.location_address.city }}, {{ singleEvent.location_address.state }} {{ singleEvent.location_address.zip }}
+                </p>
+                <br>
+                <h6>Special Notes:</h6>
+                <p class="summary">{{ singleEvent.summary }}</p>
+
+                <p class="event_status">
+                    {{ singleEvent.eventstatus }}
+                </p>
 
 
-        <div class="card meetings cf">
-
-            <div class="meeting">
-
-                <div class="event_show">
-                    <span class="text">{{ singleEvent.name }}</span>
-                    <span class="text">{{ singleEvent.activity_type }}</span>
-                    <span class="text">{{ singleEvent.players_required }}</span>
-                    <h4 class="event_show_location">{{ singleEvent.location }}</h4>
-                    <h5 class="event_show_players_attending">{{ singleEvent.players_attending }}</h5>
-                    <p class="summary">{{ singleEvent.summary }}</p>
-                </div>
-
-                <a class="btn" ng-href="#/events/{{ singleEvent.$id }}/edit">Edit this Event</a>
             </div>
-        </div><!-- meetings cf -->
+            <div class="large-4 medium-4 small-12 columns">
+                <div class="events_show_player_count">
+                    <p class="num_players_required">Players Needed to Play: <span class="num_players_req">{{ singleEvent.players_required }}</span></p>
+                    <a class="im_going_btn" ng-click="imGoing()" ng-hide="currentUser.$id === singleEvent.creator_id">
+                        Join Event
+                        <i class="fa fa-thumbs-up" aria-hidden="true" ></i>
+                    </a>
+                </div>
+                <div class="events_players_attending">
+
+
+                    <h3>Player's Roster [<span class="num_players_att">{{ singleEvent.players_attending }}</span>]</h3>
+                    <ul>
+                        <li>
+                            {{ singleEvent.creator_name }} (Creator)
+                        </li>
+                        <li ng-repeat="player in players">
+                            {{ player.playername }}
+                            <span class="event_show_this_player" ng-show="checkPlayers(player.playerid)">
+                                <button class="ga_btn ga_btn_sm ga_delete" ng-click="notGoing(player.$id)">
+                                    <i class="fa fa-times-circle" aria-hidden="true"></i>&nbsp;Can't come anymore
+                                </button>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,5 +1,483 @@
 @charset 'utf-8';
+$primaryColor: #2196F3;
+
+
+.ga_logo_section {
+    position: absolute;
+    left: 0;
+    top: 20px;
+
+    .ga_logo {
+        display: inline;
+        vertical-align: super;
+
+        a {
+            color: #fff;
+            font-size: 1em;
+        }
+    }
+
+    .ga_offcanvas_toggle {
+        font-size: 2em;
+        color: #fff;
+        &:hover {
+            cursor: pointer;
+            color: #BBDEFB;
+        }
+    }
+}
+
+.ga_off_canvas_menu {
+    background: #90A4AE;
+    color: #fff;
+}
+
+ul.off-canvas-list li a {
+    border-bottom: 1px solid rgba(69, 90, 100, 0.5);
+    color: #ECEFF1;
+
+    &:hover {
+        background-color: #455A64;
+    }
+}
+
+.ga_page_bar {
+    background-color: #E3F2FD;
+    margin-bottom: 2em;
+    padding: 1.25em 1em;
+    .row {
+        position: relative;
+    }
+    &.ga_events_show_page {
+        margin-bottom: 0;
+    }
+}
+
+/************************ Event Index Page Styles *****************************/
+
+.ga_event {
+    border: 1px solid #CFD8DC;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.ga_delete_ribbon {
+    text-align: center;
+
+    a.ga_delete_x {
+        font-size: 0.75em;
+        color: #FFCDD2;
+    }
+}
+
+.close-ribbon{
+    position: absolute;
+    top: 0;
+    right: 0.25em;
+    z-index: 1;
+    color: #eee;
+    font-size: 2em;
+    cursor: pointer;
+    width: 1.5em;
+    line-height: 0.5em;
+    -webkit-transition: line-height 0.5s;
+    transition: line-height 0.5s;
+}
+.close-ribbon:after {
+    content: "";
+    font-size: 0.5em;
+    position: absolute;
+    height: 1.2em;
+    border: 1.5em solid #F44336;
+    z-index: -1;
+    top: -1em;
+    border-top-width: 2.5em;
+    border-bottom-color: transparent;
+    right: 0;
+    -webkit-transition: height 0.5s;
+    transition: height 0.5s;
+}
+.close-ribbon:before {
+    content: "";
+    font-size: 0.5em;
+    position: absolute;
+    border-style: solid;
+    border-color: transparent transparent #B71C1C transparent;
+    top: -1em;
+    right: 3em;
+    border-width: 0 0 1em 0.7em;
+    z-index: -1;
+}
+.close-ribbon:hover:after{
+    border-color: #E57373;
+    border-bottom-color: transparent;
+}
+.close-ribbon:hover{
+    a.ga_delete_x {
+        color: #B71C1C;
+    }
+}
+
+fieldset.ga_event_date_select {
+    border: 1px solid #ddd;
+    padding: 1em;
+}
+input.ng-datepicker-input {
+    margin-bottom: 0;
+}
+input[type="text"][readonly].ng-timepicker-input {
+    background-color: #fff;
+}
+
+.ng-datepicker {
+    display: block;
+}
+
+.ga_event_time_select {
+    //margin-top: 1em;
+}
+
+.ga_datepicker_container {
+    padding-bottom: 1em;
+}
+
+table tr.even, table tr.alt, table tr:nth-of-type(even) {
+    background: none;
+}
+
+
+.ga_header_bar {
+    background-color: $primaryColor;
+    height: 70px;
+
+    .row {
+        position: relative;
+    }
+
+    .ga_userinfo {
+        position: absolute;
+        right: 0;
+        top: 24px;
+        color: #fff;
+        a {
+            color: #fff;
+        }
+    }
+}
+
+.event_card_img {
+    height: 200px;
+
+    &.football {
+        background-image: url(../images/football-card.jpg);
+        background-size: cover;
+    }
+}
+
+.ga_event {
+    position: relative;
+
+    .event_show_btn {
+        position: absolute;
+        right: 6px;
+        bottom: 6px;
+    }
+}
+
+.ga_event .event_show {
+    h3 {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: $primaryColor;
+        margin-bottom: 0;
+        line-height: 0.75em;
+    }
+    p.event_times {
+        margin-bottom: 1em;
+        padding-left: 1em;
+    }
+    .event_date {
+        margin-top: 1em;
+    }
+    p.event_actity_type {
+        text-transform: capitalize;;
+        font-weight: normal;
+    }
+
+    .event_show_location {
+        font-weight: lighter;
+        font-size: 1.125em;
+        margin-bottom: 1em;
+        span {
+            font-size: 1em;
+            font-weight: normal;
+            padding-left: 1em;
+        }
+
+    }
+
+    .event_status {
+        font-weight: bold;
+        &.event_on {
+            color: #4caf50;
+        }
+        &.event_pending {
+            color: #FDD835;
+        }
+        &.event_completed {
+            color: $primaryColor;
+        }
+        &.event_cancelled {
+            color: #B71C1C;
+        }
+    }
+}
+
+.event_attending {
+    margin: 8px 0;
+    font-size: 1.125em;
+    font-weight: lighter;
+    span {
+        font-weight: normal;
+
+    }
+    span.players_attending {
+        color: #B71C1C;
+        padding-left: 1em;
+    }
+    span.players_required {
+        //color: #4CAF50;
+    }
+
+    &.event_on {
+        span.players_attending, span.players_required {
+            color: #4caf50;
+        }
+    }
+}
+
+.event_add_event {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    border: 1px solid $primaryColor;
+    padding: 5px 15px;
+
+    &:hover {
+        background-color: $primaryColor;
+        color: #fff;
+    }
+}
+
+/************************ Event Show Page Styles ******************************/
+.ga_page_bar.ga_events_show_page {
+    padding: 1em 0;
+    .row {
+        position: relative;
+    }
+    h2 {
+        font-size: 2.25em;
+        //text-transform: capitalize;
+        margin: 0;
+    }
+
+}
+
+.ga_activity_type_pin {
+    background-color: #0A4675;
+    position: absolute;
+    top: -40px;
+    right: 10px;
+    padding: 10px 80px;
+    h3 {
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 1.25em;
+    }
+}
+
+.ga_event_banner {
+    height: 400px;
+
+    &.football {
+        background-image: url(../images/football-banner.jpg);
+        background-size: cover;
+    }
+
+    &.soccer {
+        background-image: url(../images/soccer-banner.jpeg);
+        background-size: cover;
+    }
+
+    &.basketball {
+        background-image: url(../images/basketball-banner.jpg);
+        background-size: cover;
+        background-position: center center;
+    }
+
+    &.soccer {
+        background-image: url(../images/soccer-banner.jpeg);
+        background-size: cover;
+    }
+
+    &.softball {
+        background-image: url(../images/softball-banner.jpg);
+        background-size: cover;
+    }
+
+    &.golf {
+        background-image: url(../images/golf-banner.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+
+    &.diskgolf {
+        background-image: url(../images/diskgolf-banner.jpg);
+        background-size: cover;
+    }
+
+    &.baseball {
+        background-image: url(../images/baseball-banner.jpg);
+        background-size: cover;
+        background-position: center center;
+    }
+
+    &.mountainbiking {
+        background-image: url(../images/mountainbiking-banner.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+.event_show {
+    position: relative;
+    padding: 1em 0;
+
+    .event_date {
+        font-size: 1.25em;
+    }
+    .event_time {
+        font-size: 1em;
+        margin-bottom: 2em;
+    }
+}
+
+.events_players_attending {
+    background-color: #E0E0E0;
+    padding: 5px 10px;
+    min-height: 300px;
+    h3 {
+        font-size: 1.5em;
+        font-weight: 500;
+    }
+
+    ul {
+        padding-left: 15px;
+    }
+
+    li {
+        padding: 0.25em 0;
+    }
+}
+
+
+
+/************************ End Event Show Page Styles **************************/
+/************************ Event Create/Edit Page Styles ***********************/
+label.ampm {
+    font-size: 0.85em;
+}
+
+input {
+    font-weight: normal;
+}
+
+span.showCurrentTimeValue {
+    font-size: .85em;
+    font-style: italic;
+}
+
+/************************ End Event Create/Edit Page Styles *******************/
+/************************ Button Styles ***************************************/
+
+.ga_btn {
+
+    &.ga_btn_sm {
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+    &.ga_delete {
+        background-color: #C62828;
+    }
+
+    &.event_show_btn {
+        background-color: $primaryColor;
+        color: #fff;
+        padding: 5px 10px;
+
+        &:hover {
+            background-color: #0A4675;
+        }
+    }
+
+    &.ga_submit_btn {
+        background-color: #E3F2FD;
+        color: #0A4675;
+        border: 1px solid #0a4675;
+
+    }
+}
+
+.im_going_btn {
+    color: white;
+    background-color: $primaryColor;
+    padding: 1em 2em;
+    margin: 1em 0;
+    display: inline-block;
+
+    &:hover {
+        background-color: #0A4675;
+        color: #fff;
+    }
+}
+
+
+/************************ End Button Styles ***********************************/
+
+
+/************************ Footer Styles ***************************************/
 
 footer {
-    height: 500px;
+    .footer-top {
+        background-color: #F5F5F5;
+        padding: 1em 0;
+
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            color: #0A4675;
+        }
+    }
+    .footer-bottom {
+        background-color: #0A4675;
+        height: 400px;
+        text-align: center;
+        color: #fff;
+        padding: 2em 0;
+    }
+}
+/************************ End Footer Styles ***********************************/
+
+
+@media screen and (max-width: 1024px) {
+    .ga_userinfo {
+        position: absolute;
+        right: 10px;
+    }
+
+    .ga_logo_section {
+        left: 10px;
+    }
 }

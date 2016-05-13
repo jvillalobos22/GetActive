@@ -1,88 +1,54 @@
+<div class="ga_page_bar">
+    <div class="row">
+        <h2>All Events</h2>
+        <a class="event_add_event" ng-href="#/events/new">Create an Event</a>
+    </div>
+</div>
 <div class="row">
+    <div class="large-12 columns ga_search">
+        <input type="text" ng-model="query" placeholder="Search for events">
+    </div>
     <div class="large-12 columns">
+        <div>
+            <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+                <li ng-repeat="(key, event) in events | orderBy: 'event_date' | filter: {$: query}">
+                    <div class="ga_event" ng-init="updateStatus(event, event.$id)" >
+                        <div class="ga_delete_ribbon close-ribbon tool-tip" ng-show="currentUsersEvent(event)" ng-click="deleteEvent(key)">
+                            <a class="ga_delete_x">&times;</a>
+                            <span>Delete this event</span>
+                            <!--<i class="fa fa-trash tool-tip" aria-hidden="true" ng-click="deleteEvent(key)"><span>Delete this event</span></i>-->
+                        </div>
+                        <!--<div class="event_card_img" ng-class="setCardImg(event.activity_type)" >
 
+                        </div>-->
+                        <div class="event_show">
+                            <h3 class="event_name">{{ event.name }}</h3>
+                            <p class="event_actity_type">{{ event.activity_type }}</p>
 
-        <div class="card meetings cf">
-            <a class="event_addEvent" ng-href="#/events/new">Create an Event</a>
-            <!--
-            <div class="textintro">
-                <h1>Add an Event</h1>
-                <p>
-                Type an event name and hit +
-                </p>
-            </div>
+                            <p class="event_date">
+                                {{ event.event_date | date: 'EEE, MMM d' }}
+                            </p>
+                            <p class="event_times">
+                                {{ event.event_start_time | date: 'h:mm a'}} - {{ event.event_end_time | date: 'h:mm a' }}
+                            </p>
+                            <p class="event_attending" ng-class="enoughPlayers(event.players_attending, event.players_required)">Players Attending / Required:
+                                <br>
+                                <span class="players_attending">{{ event.players_attending }}</span>
+                                <span>&nbsp;/&nbsp;</span>
+                                <span class="players_required">{{ event.players_required }}</span>
+                            </p>
+                            <h4 class="event_show_location">Location: <br><span>{{ event.location }}</span></h4>
+                            <h5 class="event_show_players_attending"></h5>
 
-            <form class="formgroup addmeeting cf" name="myform" ng-submit="addEvent()" novalidate >
-                <!-- Event Name
-                <input type="text" name="eventname" placeholder="Event name"
-                    ng-model="eventname" ng-required="true">
+                            <p class="event_status" ng-class="statusClass(event.eventstatus)">
+                                Event is {{ event.eventstatus }}
+                            </p>
+                        </div>
 
-                <!-- Activity Type
-                <select ng-model="activitytype" ng-required="true">
-                    <option selected="true" disabled="disabled" value="">
-                        Select an Activity Type
-                    </option>
-                    <option value="soccer">
-                        Soccer
-                    </option>
-                    <option value="football">
-                        Football
-                    </option>
-                    <option value="basketball">
-                        Basket Ball
-                    </option>
-                </select>
-
-                <!-- Players Required
-                <input type="number" name="players_required" placeholder="Players Required"
-                    ng-model="playersrequired" ng-required="true">
-
-                <!-- Location
-                <input type="text" name="location" placeholder="Location"
-                    ng-model="location" ng-required="true">
-
-                <!-- Summary
-                <input type="text" name="summary" placeholder="Message to Players"
-                    ng-model="summary" >
-
-                <!-- Skill Level
-                <select ng-model="skill" ng-required="true">
-                    <option selected="true" disabled="disabled" value="">
-                        Required Skill
-                    </option>
-                    <option value="all">
-                        All levels welcome
-                    </option>
-                    <option value="intermediate">
-                        Intermediate
-                    </option>
-                    <option value="advanced">
-                        Advanced
-                    </option>
-                    <option value="expert">
-                        Expert
-                    </option>
-                </select>
-
-
-                <button type="submit" class="btn" ng-disabled="myform.$invalid">+</button>
-            </form>
-            -->
-            <h2>All Events</h2>
-            <div class="meeting" ng-repeat="(key, event) in events">
-                <i class="fa fa-trash tool-tip" aria-hidden="true" ng-click="deleteEvent(key)"><span>Delete this event</span></i>
-
-                <div class="event_show">
-                    <span class="text">{{ event.name }}</span>
-                    <span class="text">{{ event.activity_type }}</span>
-                    <span class="text">{{ event.players_required }}</span>
-                    <h4 class="event_show_location">{{ event.location }}</h4>
-                    <h5 class="event_show_players_attending">{{ event.players_attending }}</h5>
-                    <p class="summary">{{ event.summary }}</p>
-                </div>
-
-                <a class="btn" ng-href="#/events/{{event.$id}}">Show Event</a>
-            </div>
+                        <a class="ga_btn event_show_btn" ng-href="#/events/{{event.$id}}">More</a>
+                    </div>
+                </li>
+            </ul>
         </div><!-- meetings cf -->
     </div>
 </div>

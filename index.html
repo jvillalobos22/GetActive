@@ -32,17 +32,31 @@
         <div class="off-canvas-wrap">
             <div class="inner-wrap">
                 <div class="ga_header_bar">
+                    <div class="ga_userinfo_mobile">
+                        <span class="left-off-canvas-toggle ga_offcanvas_toggle" href="#" >
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </span>
+                        <div class="ga_mobile_login_links">
+                            <span>Hi {{ currentUser.firstname }}</span>
+                            <a ng-href="#/login" ng-click="logout()" class="ga_login">&nbsp;|&nbsp;Logout</a>
+                        </div>
+                    </div>
+                    <div class="ga_userinfo_mobile" ng-hide="currentUser" >
+                        <a ng-href="#/login">Login</a>&nbsp;|&nbsp;
+                        <a ng-href="#/register">Register</a>
+                    </div>
                     <div class="row">
                         <div class="ga_logo_section">
-                            <span class="left-off-canvas-toggle ga_offcanvas_toggle" href="#" >
+                            <span class="left-off-canvas-toggle ga_offcanvas_toggle hide_mobile" href="#" >
                                 <i class="fa fa-bars" aria-hidden="true"></i>
                             </span>
-                            <h1 class="ga_logo">
-                                <a ng-show="currentUser" ng-href="#/events">getActive!</a>
-                            </h1>
+                            <div class="ga_logo">
+                                <a ng-show="currentUser" ng-href="#/events"><img src="images/ga-logo.png" alt="Get Active!"></a>
+                            </div>
                         </div>
+
                         <div class="ga_userinfo" ng-show="currentUser" ng-controller="RegistrationController">
-                            <span>Hi {{ currentUser.firstname}}</span>
+                            <span>Hi {{ currentUser.firstname }}</span>
                             <a ng-href="#/login" ng-click="logout()" class="ga_login">&nbsp;|&nbsp;Logout</a>
                         </div>
                         <div class="ga_userinfo" ng-hide="currentUser" >
@@ -75,6 +89,9 @@
                             <a ng-show="currentUser" ng-href="#/events/query/golf">Golf</a>
                         </li>
                         <li>
+                            <a ng-show="currentUser" ng-href="#/events/query/hiking">Hiking</a>
+                        </li>
+                        <li>
                             <a ng-show="currentUser" ng-href="#/events/query/mountainbiking">Mountain Biking</a>
                         </li>
                         <li>
@@ -83,6 +100,9 @@
                         <li>
                             <a ng-show="currentUser" ng-href="#/events/query/softball">Soft Ball</a>
                         </li>
+                        <li>
+                            <a ng-show="currentUser" ng-href="#/events/query/volleyball">Volleyball</a>
+                        </li>
                         <li><a ng-hide="currentUser" ng-href="#/login">Login</a></li>
                         <li><a ng-hide="currentUser" ng-href="#/register">Register</a></li>
                     </ul>
@@ -90,8 +110,6 @@
 
                 <section class="main-section">
                         <div class="page">
-
-
                             <main class="ga_main" ng-view></main>
                         </div>
 

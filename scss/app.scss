@@ -5,24 +5,33 @@ $primaryColor: #2196F3;
 .ga_logo_section {
     position: absolute;
     left: 0;
-    top: 20px;
+    top: 15px;
 
     .ga_logo {
-        display: inline;
-        vertical-align: super;
+        display: block;
+        text-align: center;
+        vertical-align: bottom;
 
         a {
-            color: #fff;
+            color: $primaryColor;
             font-size: 1em;
+            img {
+                margin-left: 2.5em;
+                width: 230px;
+                margin-top: -40px
+            }
+            &:hover {
+                color: #BBDEFB;
+            }
         }
     }
 
     .ga_offcanvas_toggle {
         font-size: 2em;
-        color: #fff;
+        color: #BBDEFB;
         &:hover {
             cursor: pointer;
-            color: #BBDEFB;
+            color: $primaryColor;
         }
     }
 }
@@ -50,17 +59,37 @@ ul.off-canvas-list li a {
     }
     &.ga_events_show_page {
         margin-bottom: 0;
+        .ga_edit_btn {
+            margin-left: 1em;
+        }
     }
 }
 
+.ga_main {
+
+}
 /************************ Event Index Page Styles *****************************/
+
+input.ga_search_bar {
+    height: 55px;
+    font-size: 1.25em;
+    margin-bottom: 2em;
+    &:hover, :focus {
+        outline: none;
+    }
+    &.ng-valid.ng-touched {
+        border: 1px solid #ccc;
+    }
+}
 
 .ga_event {
     border: 1px solid #CFD8DC;
     padding: 10px;
     border-radius: 5px;
     position: relative;
-    box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-bottom: 1.5em;
 }
 
 .ga_delete_ribbon {
@@ -149,8 +178,8 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
 
 
 .ga_header_bar {
-    background-color: $primaryColor;
-    height: 70px;
+    background-color: #fff; //$primaryColor;
+    height: 110px;
 
     .row {
         position: relative;
@@ -160,7 +189,20 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
         position: absolute;
         right: 0;
         top: 24px;
+        color: $primaryColor;
+        a {
+            color: $primaryColor;
+        }
+    }
+    .ga_userinfo_mobile {
+        display: none;
+
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-color: $primaryColor;
         color: #fff;
+        padding: 0.5em 0;
         a {
             color: #fff;
         }
@@ -181,8 +223,9 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
 
     .event_show_btn {
         position: absolute;
-        right: 6px;
-        bottom: 6px;
+        right: 8px;
+        bottom: 8px;
+        border-radius: 5px;
     }
 }
 
@@ -192,7 +235,7 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
         font-weight: bold;
         color: $primaryColor;
         margin-bottom: 0;
-        line-height: 0.75em;
+        line-height: 1em;
     }
     p.event_times {
         margin-bottom: 1em;
@@ -349,11 +392,23 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) {
         background-size: cover;
         background-position: center;
     }
+
+    &.volleyball {
+        background-image: url(../images/volleyball-banner.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+
+    &.hiking {
+        background-image: url(../images/hiking-banner.jpg);
+        background-size: cover;
+        background-position: center;
+    }
 }
 
 .event_show {
     position: relative;
-    padding: 1em 0;
+    padding: 1em 0 0 0;
 
     .event_date {
         font-size: 1.25em;
@@ -403,6 +458,9 @@ span.showCurrentTimeValue {
 /************************ Button Styles ***************************************/
 
 .ga_btn {
+    &:hover {
+        cursor: pointer;
+    }
 
     &.ga_btn_sm {
         padding: 5px 10px;
@@ -479,5 +537,124 @@ footer {
 
     .ga_logo_section {
         left: 10px;
+    }
+}
+
+@media screen and (max-width: 467px) {
+
+    .hide_mobile {
+        display: none;
+    }
+    .ga_page_bar {
+        &.ga_events_show_page {
+            padding-top: 2.25em;
+        }
+    }
+
+    .ga_logo_section {
+        position: static;
+        padding-top: 1.5em;
+    }
+
+    .ga_logo_section .ga_offcanvas_toggle {
+        margin-top: -1.5em;
+    }
+    .ga_logo_section .ga_logo a img {
+        margin-top: 0;
+    }
+
+    .ga_logo {
+        position: static;
+        a {
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+        }
+        img {
+            margin: 0 auto;
+            display: block;
+        }
+    }
+    .ga_logo_section .ga_logo a img {
+        margin-left: auto;
+    }
+    .ga_header_bar {
+        height: 170px;
+    }
+
+    .ga_header_bar .ga_userinfo {
+        display: none;
+    }
+    .ga_header_bar .ga_userinfo_mobile {
+        display: block;
+        position: relative;
+        text-align: right;
+        .ga_mobile_login_links {
+            margin-right: 1em;
+        }
+        .ga_offcanvas_toggle {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            font-size: 1.75em;
+            color: #fff;
+            &:hover {
+                cursor: pointer;
+                color: #BBDEFB;
+            }
+        }
+    }
+
+    .ga_activity_type_pin {
+        top: -60px;
+    }
+    .ga_event_banner {
+
+        &.football {
+            background-size: cover;
+        }
+
+        &.soccer {
+            background-size: contain;
+        }
+
+        &.basketball {
+            background-size: cover;
+            background-position: center center;
+        }
+
+        &.soccer {
+            background-size: cover;
+        }
+
+        &.softball {
+            background-size: cover;
+        }
+
+        &.golf {
+            background-size: cover;
+            background-position: center;
+        }
+
+        &.diskgolf {
+            background-size: cover;
+        }
+
+        &.baseball {
+            background-size: cover;
+            background-position: center center;
+        }
+
+        &.volleyball {
+            background-image: url(../images/volleyball-banner.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        &.hiking {
+            background-image: url(../images/hiking-banner.jpg);
+            background-size: cover;
+            background-position: center;
+        }
     }
 }

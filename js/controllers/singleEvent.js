@@ -70,24 +70,41 @@ myApp.controller('SingleEventController',
                 return 'mountainbiking';
             } else if (activityType == 'softball') {
                 return 'softball';
+            } else if (activityType == 'volleyball') {
+                return 'volleyball';
+            } else if (activityType == 'hiking') {
+                return 'hiking';
             } else {
                 return 'no_banner';
             }
         };
 
         $scope.updateEvent = function() {
-            if($scope.starttime.meridian == "PM") {
+            if($scope.starttime.meridian == "PM" && $scope.starttime.hour != 12) {
                 $scope.starttime.hour += 12;
             }
-            if($scope.endtime.meridian == "PM") {
+            if($scope.endtime.meridian == "PM" && $scope.endtime.hour != 12) {
                 $scope.endtime.hour += 12;
             }
+            if($scope.starttime.hour < 10) {
+                var hr = $scope.starttime.hour.toString();
+                console.log('hr :' + hr);
+                if (hr.length < 2) {
+                    //add leading zero
+                    hr = '0' + hr;
+                }
+                console.log('hr :' + hr);
+                $scope.starttime.hour = hr;
+            }
 
-            $scope.singleEvent.event_start_time = $scope.eventdate + 'T' + $scope.starttime.hour + ':' + $scope.starttime.min + ':00';
-            $scope.singleEvent.event_end_time = $scope.eventdate + 'T' + $scope.endtime.hour + ':' + $scope.endtime.min + ':00';
+            console.log($scope.singleEvent.eventdate);
+
+            $scope.singleEvent.event_start_time = $scope.singleEvent.event_date + 'T' + $scope.starttime.hour + ':' + $scope.starttime.min + ':00';
+            $scope.singleEvent.event_end_time = $scope.singleEvent.event_date + 'T' + $scope.endtime.hour + ':' + $scope.endtime.min + ':00';
 
             single_event.$save().then(function(ref) {
                 ref.key() === single_event.$id; // true
+                $location.path('/events');
             }, function(error) {
                 console.log("Error:", error);
             });

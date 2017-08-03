@@ -11,6 +11,7 @@ The idea behind getActive is to allow users to create and find local sporting ev
 ## Technology
 
 I used several technologies when building this application. I've listed the main tools below:
+
 * Angular 1.5
 * Firebase
 * Foundation 5

@@ -80,7 +80,6 @@ myApp.controller('SingleEventController',
         };
 
         $scope.updateEvent = function() {
-            console.log('inside updateEvent()');
             if($scope.starttime.meridian == "PM" && $scope.starttime.hour != 12) {
                 $scope.starttime.hour += 12;
             }
@@ -104,7 +103,7 @@ myApp.controller('SingleEventController',
             console.log('About to save event with new details.');
             console.log('Start time is set to: ' + $scope.singleEvent.event_start_time);
             console.log('End time is set to: ' + $scope.singleEvent.event_end_time);
-            
+
             single_event.$save().then(function(ref) {
                 ref.key() === single_event.$id; // true
                 $location.path('/events');
